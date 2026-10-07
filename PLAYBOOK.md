@@ -9,6 +9,10 @@ Run the same process for every app.
 app-store-playbook/
 ├── make_screenshots.py      # Unified screenshot generator
 ├── PLAYBOOK.md              # This file
+├── workflows.md             # GitHub Actions workflows guide
+├── creative-assets.md       # Header/Search Results assets guide
+├── promotional-copy/        # Marketing copy per app
+│   └── omr-sheet-cam.md
 ├── metadata-template/       # Metadata file templates
 │   └── en-US/
 │       ├── name.txt
