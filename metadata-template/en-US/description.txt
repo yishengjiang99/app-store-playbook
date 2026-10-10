@@ -21,3 +21,9 @@ GOOD TO KNOW
 
 PRIVACY
 [Data collection disclosure or "collects no data" statement]
+
+SUBSCRIPTION (required if the app has auto-renewable subscriptions; delete otherwise)
+[Plan name]: [price]/[period]. Payment is charged to your Apple ID at confirmation. The subscription renews automatically unless cancelled at least 24 hours before the end of the current period. Manage or cancel in your App Store account settings.
+
+Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+Privacy Policy: [privacy URL]

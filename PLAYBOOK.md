@@ -119,7 +119,14 @@ GOOD TO KNOW
 [Honest limitations — builds trust, reduces bad reviews]
 
 [PRIVACY / OPEN SOURCE if applicable]
+
+[SUBSCRIPTION block — REQUIRED if the app has auto-renewable subscriptions (Guideline 3.1.2):
+ plans + prices, auto-renew terms,
+ Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+ Privacy Policy: <privacy URL>]
 ```
+
+See `learnings-four-apps.md` section 9 for the exact block.
 
 ## Step 3: Submit
 
@@ -142,6 +149,7 @@ The workflow:
 - [ ] Screenshots generated (4-5 frames, both sizes)
 - [ ] Screenshots uploaded to ASC (verify in dashboard)
 - [ ] All metadata files filled in
+- [ ] If subscriptions: description has subscription block + working Terms of Use (EULA) + Privacy links (3.1.2)
 - [ ] `whatsnew.txt` present for version updates
 - [ ] Build number bumped
 - [ ] Submitted via workflow

@@ -208,6 +208,31 @@ If a build contains telemetry or IAP:
 
 ---
 
+## 9. Subscriptions need a Terms of Use (EULA) link in the description — Guideline 3.1.2
+
+FinalCap 1.0 was rejected on 2026-10-10:
+
+> The submission offers auto-renewable subscriptions, such as FinalCap Pro Monthly, but does not include a functional link to the Terms of Use (EULA) in the app metadata that appears on the app's App Store product page.
+
+The in-app paywall had Terms/Privacy links, but that is not enough; the **App Store description** (product page metadata) must also link them.
+
+Fix (every app with auto-renewable subscriptions, before submitting):
+- Append a subscription block to `description.txt`:
+  ```
+  SUBSCRIPTION
+  [Plan name]: [price]/[period]. [Free trial, if any.]
+  Payment is charged to your Apple ID at confirmation. The subscription renews automatically unless cancelled at least 24 hours before the end of the current period. Manage or cancel in your App Store account settings.
+
+  Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+  Privacy Policy: [app privacy URL]
+  ```
+- Use Apple's standard EULA URL unless the app has a custom license agreement in ASC; if the paywall links your own terms page, make sure it returns 200.
+- Curl-verify both URLs return 200, sync metadata to ASC, and read it back before submitting.
+- Paywall must still show price, period, auto-renew text, Restore Purchases, and Terms + Privacy links.
+- The description is locked while Waiting for Review / In Review (see section 2), so add this before the first submission.
+
+---
+
 ## Quick reference: resubmit checklist
 
 - [ ] Screenshots uploaded and verified in ASC *before* submitting
@@ -218,3 +243,4 @@ If a build contains telemetry or IAP:
 - [ ] Build number > previous submitted build
 - [ ] IAP products created in ASC (if applicable)
 - [ ] Privacy policy URL live and accurate
+- [ ] Subscriptions: description has subscription block + working Terms of Use (EULA) and Privacy Policy links (3.1.2)
