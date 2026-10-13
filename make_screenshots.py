@@ -53,7 +53,6 @@ _fonts: dict[tuple[int, str], ImageFont.FreeTypeFont] = {}
 def font(size: int, weight: str = "ExtraBold") -> ImageFont.FreeTypeFont:
     key = (size, weight)
     if key not in _fonts:
-        # Try bundled fonts first, fall back to system
         for path in [
             Path(__file__).parent / "fonts" / f"Inter-{weight}.ttf",
             Path("/usr/share/fonts/truetype/sand-box/google/Inter/Inter-VariableFont_opsz,wght.ttf"),
@@ -82,7 +81,6 @@ def make_frame(config: dict, shot: dict, device: str, brand: dict) -> Image.Imag
     img = Image.new("RGB", (W, H), bg)
     d = ImageDraw.Draw(img)
 
-    # Hero text at top (large, bold, centered)
     hero_lines = shot["hero"].split("\\n")
     y = int(H * 0.08)
     for line in hero_lines:
@@ -92,7 +90,6 @@ def make_frame(config: dict, shot: dict, device: str, brand: dict) -> Image.Imag
         d.text(((W - tw) // 2, y), line, font=f, fill=ink)
         y += int(W * 0.095)
 
-    # Sub text below hero
     if shot.get("sub"):
         f = font(int(W * 0.038), "SemiBold")
         bbox = d.textbbox((0, 0), shot["sub"], font=f)
@@ -100,17 +97,14 @@ def make_frame(config: dict, shot: dict, device: str, brand: dict) -> Image.Imag
         d.text(((W - tw) // 2, y + 10), shot["sub"], font=f, fill=muted)
         y += int(W * 0.07)
 
-    # Source image (app screenshot/mockup) in the middle
     src_path = Path(config["source_dir"]) / shot.get("source", "")
     if src_path.exists():
         src = Image.open(src_path).convert("RGB")
-        # Scale to fit middle area, preserving aspect
         max_w = int(W * 0.85)
         max_h = int(H * 0.55)
         src.thumbnail((max_w, max_h), Image.Lanczos)
         sx = (W - src.width) // 2
         sy = int(H * 0.32)
-        # Rounded card background
         pad = 20
         d.rounded_rectangle(
             [sx - pad, sy - pad, sx + src.width + pad, sy + src.height + pad],
@@ -118,7 +112,6 @@ def make_frame(config: dict, shot: dict, device: str, brand: dict) -> Image.Imag
         )
         img.paste(src, (sx, sy))
 
-    # Accent bar at bottom
     bar_h = 8
     d.rectangle([0, H - bar_h, W, H], fill=accent)
 
