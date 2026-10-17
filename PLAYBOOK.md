@@ -11,6 +11,8 @@ app-store-playbook/
 ├── PLAYBOOK.md              # This file
 ├── workflows.md             # GitHub Actions workflows guide
 ├── creative-assets.md       # Header/Search Results assets guide
+├── audit-fix-verify-testflight-loop.md  # Pre-submission audit/fix/verify/TestFlight loop
+├── audit-loop-templates/    # Bug template, flow template, verdicts, StoreKit matrix, kickoff prompt
 ├── promotional-copy/        # Marketing copy per app
 │   └── omr-sheet-cam.md
 ├── metadata-template/       # Metadata file templates
@@ -30,6 +32,14 @@ app-store-playbook/
     ├── ai-music-radar.json  # (template)
     └── finalcap.json        # (template)
 ```
+
+## Before Step 1: Audit → Fix → Verify → TestFlight loop
+
+Before submitting a new app or a big release, run the
+[Audit → Fix → Verify → TestFlight loop](audit-fix-verify-testflight-loop.md): flow audit with step
+IDs → bug issues → product review → parallel fix streams → per-PR verification → one main CI run
+→ TestFlight. Templates and the Chief of Staff kickoff prompt are in
+[`audit-loop-templates/`](audit-loop-templates/). First run: omr-sheet-cam (33 issues, 33 PRs, ~6 h).
 
 ## Step 1: Screenshots
 
